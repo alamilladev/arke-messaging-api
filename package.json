@@ -1,0 +1,31 @@
+{
+  "name": "messages-backend",
+  "version": "0.1.0",
+  "description": "Backend for an instant messaging application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alamilladev/messages-backend.git"
+  },
+  "keywords": [
+    "messages",
+    "messaging",
+    "node",
+    "backend",
+    "api",
+    "server",
+    "chat"
+  ],
+  "author": "Armando Alamilla Cuellar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alamilladev/messages-backend/issues"
+  },
+  "homepage": "https://github.com/alamilladev/messages-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
