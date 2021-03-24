@@ -1,10 +1,12 @@
 const express = require('express');
 
-var app = express();
+const app = express();
+const port = process.env.PORT || 3000
 
 app.use('/', function (req, res) {
-  res.send('Hola')
+  res.send('Hello world!')
 })
 
-app.listen(3000)
-console.log('La aplicación está escuchando en el puerto 3000')
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`)
+})
