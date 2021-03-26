@@ -10,7 +10,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/message', (req, res) => {
+  console.log(req.headers)
   console.log(req.query)
+
+  res.header({
+    "custom-header": "Custom value"
+  })
   res.send('Message list')
 })
 
