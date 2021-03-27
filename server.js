@@ -1,12 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const response = require('./network/response')
 
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/message', (req, res) => {
@@ -16,12 +15,16 @@ app.get('/message', (req, res) => {
   res.header({
     'custom-header': 'Custom value'
   })
-  res.send('Message list')
+
+  response.success(req, res, 200, 'Mesage list')
 })
 
 app.post('/message', (req, res) => {
-  console.log(req.body)
-  res.status(201).send({ error: '', body: 'Message created successfully' })
+  if (req.query.error === 'true') {
+    response.error(req, res, 400, 'Simulated error')
+  } else {
+    response.success(req, res, 201, 'Message created successfully')
+  }
 })
 
 app.listen(port, () => {
