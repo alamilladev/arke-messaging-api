@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require('express')
 const bodyParser = require('body-parser')
 
-const app = express();
+const app = express()
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({
@@ -14,14 +14,14 @@ app.get('/message', (req, res) => {
   console.log(req.query)
 
   res.header({
-    "custom-header": "Custom value"
+    'custom-header': 'Custom value'
   })
   res.send('Message list')
 })
 
 app.post('/message', (req, res) => {
   console.log(req.body)
-  res.send('Message added')
+  res.status(201).send({ error: '', body: 'Message created successfully' })
 })
 
 app.listen(port, () => {
