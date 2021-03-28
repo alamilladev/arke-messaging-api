@@ -25,7 +25,10 @@ app.get('/message', (req, res) => {
 // create new message
 app.post('/message', (req, res) => {
   if (req.query.error === 'true') {
-    response.error(req, res, 400, 'Simulated error')
+    response.error(
+      req, res, 400,
+      'Unexpected error', 'It\'s just a simulated error'
+    )
   } else {
     response.success(req, res, 201, 'Message created successfully')
   }
