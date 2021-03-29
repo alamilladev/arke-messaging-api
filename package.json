@@ -1,14 +1,14 @@
 {
-  "name": "messages-backend",
+  "name": "arke-messaging-api",
   "version": "0.1.0",
-  "description": "Backend for an instant messaging application.",
+  "description": "Messaging API REST develop with Express.js and node.js for \"Arke project}\", an instant messaging application.",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alamilladev/messages-backend.git"
+    "url": "git+https://github.com/alamilladev/arke-messaging-api.git"
   },
   "keywords": [
     "messages",
@@ -23,9 +23,9 @@
   "author": "Armando Alamilla Cuellar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alamilladev/messages-backend/issues"
+    "url": "https://github.com/alamilladev/arke-messaging-api/issues"
   },
-  "homepage": "https://github.com/alamilladev/messages-backend#readme",
+  "homepage": "https://github.com/alamilladev/arke-messaging-api#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1"

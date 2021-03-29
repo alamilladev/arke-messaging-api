@@ -1,5 +1,5 @@
-# messages-api
-API REST develop with Express.js and nodeJS for "messages" project, an instant messaging application.
+# Arke messaging API
+Messaging API REST develop with Express.js and node.js for "Arke project", an instant messaging application.
 
 
 #### _Install dependencies_
