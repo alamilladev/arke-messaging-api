@@ -6,12 +6,13 @@ const router = express.Router()
 
 // List messages
 router.get('/', (req, res) => {
-  console.log(req.headers)
-  console.log(req.query)
-
-  res.header({ 'custom-header': 'Custom value' })
-
-  response.success(req, res, 200, 'Mesage list')
+  controller.getMessages()
+    .then((messageList) => {
+      response.success(req, res, 200, messageList)
+    })
+    .catch((error) => {
+      response.error(req, res, 500, 'Unexpected error', error)
+    })
 })
 
 // create new message
