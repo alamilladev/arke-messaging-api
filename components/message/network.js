@@ -6,7 +6,7 @@ const router = express.Router()
 
 // List messages
 router.get('/', (req, res) => {
-  controller.getMessages()
+  controller.listMessages()
     .then((messageList) => {
       response.success(req, res, 200, messageList)
     })
@@ -22,7 +22,17 @@ router.post('/', (req, res) => {
       response.success(req, res, 201, fullMessage)
     })
     .catch((error) => {
-      response.error(req, res, 400, 'Invalid data', error)
+      response.error(req, res, 400, 'Missing or invalid data', error)
+    })
+})
+
+router.patch('/:id', (req, res) => {
+  controller.updateMessage(req.params.id, req.body.message)
+    .then((updatedMessage) => {
+      response.success(req, res, 200, updatedMessage)
+    })
+    .catch((error) => {
+      response.error(req, res, 500, 'Missing or invalid data', error)
     })
 })
 
