@@ -18,9 +18,9 @@ const addMessage = (user, message) => {
   })
 }
 
-const listMessages = () => {
+const listMessages = (filterUser) => {
   return new Promise((resolve, reject) => {
-    resolve(store.list())
+    resolve(store.list(filterUser))
   })
 }
 

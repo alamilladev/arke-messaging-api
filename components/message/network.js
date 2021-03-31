@@ -4,9 +4,11 @@ const controller = require('./controller')
 
 const router = express.Router()
 
-// List messages
+// List all messages or by user filter
 router.get('/', (req, res) => {
-  controller.listMessages()
+  const filterUser = req.query.user || null
+
+  controller.listMessages(filterUser)
     .then((messageList) => {
       response.success(req, res, 200, messageList)
     })
@@ -15,7 +17,7 @@ router.get('/', (req, res) => {
     })
 })
 
-// create new message
+// Create new message
 router.post('/', (req, res) => {
   controller.addMessage(req.body.user, req.body.message)
     .then((fullMessage) => {
@@ -26,6 +28,7 @@ router.post('/', (req, res) => {
     })
 })
 
+// Update a message
 router.patch('/:id', (req, res) => {
   controller.updateMessage(req.params.id, req.body.message)
     .then((updatedMessage) => {
