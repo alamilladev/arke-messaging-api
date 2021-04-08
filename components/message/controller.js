@@ -35,8 +35,20 @@ const updateMessage = (id, message) => {
   })
 }
 
+const deleteMessage = (id) => {
+  return new Promise((resolve, reject) => {
+    if (id) {
+      resolve(store.delete(id))
+    } else {
+      console.error('[messageController] There is no id')
+      reject(new Error('Data is missing or invalid'))
+    }
+  })
+}
+
 module.exports = {
   addMessage,
   listMessages,
-  updateMessage
+  updateMessage,
+  deleteMessage
 }

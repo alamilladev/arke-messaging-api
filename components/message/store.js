@@ -19,6 +19,10 @@ const addMessage = (message) => {
   newMessage.save()
 }
 
+const deleteMessage = async (id) => {
+  return await MessageModel.deleteOne({ _id: id })
+}
+
 const listMessages = async (filterUser) => {
   let filter = {}
 
@@ -39,6 +43,7 @@ const updateMessage = async (id, message) => {
 
 module.exports = {
   add: addMessage,
+  delete: deleteMessage,
   list: listMessages,
   update: updateMessage
 }

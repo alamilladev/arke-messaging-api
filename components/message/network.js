@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       response.success(req, res, 200, messageList)
     })
     .catch((error) => {
-      response.error(req, res, 500, 'Unexpected error', error)
+      response.error(req, res, 500, 'Internal Server Error', error)
     })
 })
 
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
       response.success(req, res, 201, fullMessage)
     })
     .catch((error) => {
-      response.error(req, res, 400, 'Missing or invalid data', error)
+      response.error(req, res, 500, 'Internal Server Error', error)
     })
 })
 
@@ -35,7 +35,18 @@ router.patch('/:id', (req, res) => {
       response.success(req, res, 200, updatedMessage)
     })
     .catch((error) => {
-      response.error(req, res, 500, 'Missing or invalid data', error)
+      response.error(req, res, 500, 'Internal Server Error', error)
+    })
+})
+
+// Delete a message
+router.delete('/:id', (req, res) => {
+  controller.deleteMessage(req.params.id)
+    .then(() => {
+      response.success(req, res, 200, 'Message deleted successfully')
+    })
+    .catch((error) => {
+      response.error(req, res, 500, 'Internal Server Error', error)
     })
 })
 
