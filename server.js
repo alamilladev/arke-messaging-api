@@ -1,10 +1,13 @@
-// import required modules
+// Required node modules
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { config } = require('./config/index')
+// Local imports and configs
+const { config } = require('./config/global')
+const dbConnection = require('./config/dbConnection')
 const router = require('./network/routes')
 
+dbConnection()
 const app = express()
 
 // Configure bodyParser
