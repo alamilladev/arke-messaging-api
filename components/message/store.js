@@ -9,12 +9,12 @@ const deleteMessage = (id) => {
   return MessageModel.deleteOne({ _id: id })
 }
 
-const listMessages = (filterUser) => {
+const listMessages = (chatFilter) => {
   return new Promise((resolve, reject) => {
     let filter = {}
 
-    if (filterUser) {
-      filter = { user: filterUser }
+    if (chatFilter) {
+      filter = { chat: chatFilter }
     }
 
     MessageModel.find(filter)

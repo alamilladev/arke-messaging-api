@@ -6,9 +6,9 @@ const router = express.Router()
 
 // List all messages or by user filter
 router.get('/', (req, res) => {
-  const filterUser = req.query.user || null
+  const chatFilter = req.query.chat || null
 
-  controller.listMessages(filterUser)
+  controller.listMessages(chatFilter)
     .then((messageList) => {
       response.success(req, res, 200, messageList)
     })

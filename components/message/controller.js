@@ -18,9 +18,9 @@ const addMessage = (chat, user, message) => {
   })
 }
 
-const listMessages = (filterUser) => {
+const listMessages = (chatFilter) => {
   return new Promise((resolve, reject) => {
-    resolve(store.list(filterUser))
+    resolve(store.list(chatFilter))
   })
 }
 
