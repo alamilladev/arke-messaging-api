@@ -2,29 +2,38 @@ const MessageModel = require('./model')
 
 const addMessage = (message) => {
   const newMessage = new MessageModel(message)
-  newMessage.save()
+  return newMessage.save()
 }
 
-const deleteMessage = async (id) => {
-  return await MessageModel.deleteOne({ _id: id })
+const deleteMessage = (id) => {
+  return MessageModel.deleteOne({ _id: id })
 }
 
-const listMessages = async (filterUser) => {
-  let filter = {}
+const listMessages = (filterUser) => {
+  return new Promise((resolve, reject) => {
+    let filter = {}
 
-  if (filterUser) {
-    filter = { user: filterUser }
-  }
-  const messages = await MessageModel.find(filter)
-  return messages
+    if (filterUser) {
+      filter = { user: filterUser }
+    }
+
+    MessageModel.find(filter)
+      .populate('user')
+      .exec((error, populated) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(populated)
+        }
+      })
+  })
 }
 
 const updateMessage = async (id, message) => {
   const foundMessage = await MessageModel.findById(id)
   foundMessage.message = message
 
-  const updatedMessage = await foundMessage.save()
-  return updatedMessage
+  return foundMessage.save()
 }
 
 module.exports = {

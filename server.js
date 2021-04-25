@@ -7,7 +7,7 @@ const { config } = require('./config/global')
 const dbConnection = require('./config/dbConnection')
 const router = require('./network/routes')
 
-dbConnection()
+dbConnection() // connection to MongoDB
 const app = express()
 
 // Configure bodyParser
