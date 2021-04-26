@@ -1,8 +1,11 @@
 const express = require('express')
+const multer = require('multer')
+
 const response = require('../../network/response')
 const controller = require('./controller')
 
 const router = express.Router()
+const upload = multer({ dest: 'public/files' })
 
 // List all messages or by user filter
 router.get('/', (req, res) => {
@@ -17,9 +20,9 @@ router.get('/', (req, res) => {
     })
 })
 
-// Create new message
-router.post('/', (req, res) => {
-  controller.addMessage(req.body.chat, req.body.user, req.body.message)
+// Add new message
+router.post('/', upload.single('file'), (req, res) => {
+  controller.addMessage(req.body.chat, req.body.user, req.body.message, req.file)
     .then((fullMessage) => {
       response.success(req, res, 201, fullMessage)
     })

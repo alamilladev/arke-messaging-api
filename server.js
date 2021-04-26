@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 router(app)
 
+app.use('/app', express.static('public'))
+
 app.listen(config.port, () => {
   console.log(`App listening at http://localhost:${config.port}`)
 })

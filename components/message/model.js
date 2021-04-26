@@ -13,7 +13,8 @@ const messageSchema = new Schema({
     ref: 'User',
     required: true
   },
-  message: { type: String, required: true },
+  message: { type: String },
+  file: { type: String },
   date: { type: Date, required: true }
 })
 
