@@ -1,18 +1,21 @@
 const store = require('./store')
 
-const addMessage = (chat, user, message, file) => {
+const addMessage = (chat, user, message, files) => {
   return new Promise((resolve, reject) => {
-    if (chat && user && (message || file)) {
-      let fileUrl = ''
-      if (file) {
-        fileUrl = 'http://localhost:3000/app/files/' + file.filename
+    if (chat && user && (message || files)) {
+      const filesUrls = []
+
+      if (files) {
+        files.forEach((file) => {
+          filesUrls.push('http://localhost:3000/app/files/' + file.filename)
+        })
       }
 
       const fullMessage = {
         chat: chat,
         user: user,
         message: message,
-        file: fileUrl,
+        files: filesUrls,
         date: new Date()
       }
 

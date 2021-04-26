@@ -14,7 +14,7 @@ const messageSchema = new Schema({
     required: true
   },
   message: { type: String },
-  file: { type: String },
+  files: { type: Array },
   date: { type: Date, required: true }
 })
 

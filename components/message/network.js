@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
 })
 
 // Add new message
-router.post('/', upload.single('file'), (req, res) => {
-  controller.addMessage(req.body.chat, req.body.user, req.body.message, req.file)
+router.post('/', upload.array('files', 12), (req, res) => {
+  controller.addMessage(req.body.chat, req.body.user, req.body.message, req.files)
     .then((fullMessage) => {
       response.success(req, res, 201, fullMessage)
     })
