@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const server = require('http').Server(app)
 
+const cors = require('cors')
 const bodyParser = require('body-parser')
 
 // Local imports and configs
@@ -14,7 +15,8 @@ const router = require('./network/routes')
 dbConnection() // connection to MongoDB
 socket.connect(server) // conection to socket.io
 
-// Configure bodyParser
+// Configure cors and bodyParser
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 router(app)
