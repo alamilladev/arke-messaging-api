@@ -1,10 +1,10 @@
 // Required node modules
 const express = require('express')
-const app = express()
-const server = require('http').Server(app)
-
 const cors = require('cors')
 const bodyParser = require('body-parser')
+
+const app = express()
+const server = require('http').Server(app)
 
 // Local imports and configs
 const { config } = require('./config/global')
@@ -24,5 +24,5 @@ router(app)
 app.use('/app', express.static('public'))
 
 server.listen(config.port, () => {
-  console.log(`App listening at http://localhost:${config.port}`)
+  console.log(`App listening at ${config.host}:${config.port}`)
 })

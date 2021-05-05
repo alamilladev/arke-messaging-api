@@ -1,5 +1,6 @@
 const store = require('./store')
 const { socket } = require('../../socket')
+const { config } = require('../../config/global')
 
 const addMessage = (chat, user, message, files) => {
   return new Promise((resolve, reject) => {
@@ -8,7 +9,7 @@ const addMessage = (chat, user, message, files) => {
 
       if (files) {
         files.forEach((file) => {
-          filesUrls.push('http://localhost:3000/app/files/' + file.filename)
+          filesUrls.push(`${config.host}:${config.port}/app/files/${file.filename}`)
         })
       }
 
