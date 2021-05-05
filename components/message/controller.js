@@ -1,4 +1,5 @@
 const store = require('./store')
+const { socket } = require('../../socket')
 
 const addMessage = (chat, user, message, files) => {
   return new Promise((resolve, reject) => {
@@ -19,7 +20,10 @@ const addMessage = (chat, user, message, files) => {
         date: new Date()
       }
 
-      resolve(store.add(fullMessage))
+      store.add(fullMessage)
+      socket.io.emit('message', fullMessage)
+
+      resolve(fullMessage)
     } else {
       console.error('[messageController] There is no user or message')
       reject(new Error('Data is missing or invalid'))
